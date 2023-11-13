@@ -1,4 +1,4 @@
-import Id from "../../../value-object/id.value-object";
+import Id from "../../../@shared/domain/value-object/id.value-object";
 import Product from "../../domain/product.entity";
 import ProductGateway from "../../gateway/product.gateway";
 import { AddProductInputDto, AddProductOutputDto } from "./add-product.dto";
@@ -29,7 +29,7 @@ export default class AddProductUseCase {
       purchasePrice: product.purchasePrice,
       stock: product.stock,
       createdAt: product.createdAt,
-      updatedAt: product.createdAt,
+      updatedAt: product.updatedAt,
     };
   }
 }
