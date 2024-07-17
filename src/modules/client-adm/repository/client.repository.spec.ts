@@ -24,7 +24,7 @@ describe("ClientRepository test", () => {
   });
   it("should create a client", async () => {
     const client = new Client({
-      id: new Id(),
+      id: new Id("1"),
       name: "Client 1",
       email: "client@mail.com",
       address: "Address 1",
@@ -36,12 +36,12 @@ describe("ClientRepository test", () => {
     const clientDb = await ClientModel.findOne({ where: { id: "1" } });
 
     expect(clientDb).toBeDefined();
-    expect(clientDb.id).toEqual(client.id);
+    expect(clientDb.id).toEqual(client.id.id);
     expect(clientDb.name).toEqual(client.name);
     expect(clientDb.email).toEqual(client.email);
     expect(clientDb.address).toEqual(client.address);
-    expect(clientDb.createdAt).toEqual(client.createdAt);
-    expect(clientDb.updatedAt).toEqual(client.updatedAt);
+    expect(clientDb.createdAt).toStrictEqual(client.createdAt);
+    expect(clientDb.updatedAt).toStrictEqual(client.updatedAt);
   });
 
   describe("Find Client Usecase unit test", () => {
@@ -62,8 +62,8 @@ describe("ClientRepository test", () => {
       expect(result.name).toEqual(client.name);
       expect(result.email).toEqual(client.email);
       expect(result.address).toEqual(client.address);
-      expect(result.createdAt).toEqual(client.createdAt);
-      expect(result.updatedAt).toEqual(client.updatedAt);
+      expect(result.createdAt).toStrictEqual(client.createdAt);
+      expect(result.updatedAt).toStrictEqual(client.updatedAt);
     });
   });
 });
