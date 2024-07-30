@@ -3,6 +3,14 @@ import PlacerOrderUseCase from "./place-order.usecase";
 
 
 describe("PlaceOrderUseCase unit test", () => {
+  describe("validateProducts method", () => {
+      //@ts-expect-error - no params in constructor
+      const placeOrderUseCase = new PlacerOrderUseCase();
+    it("should throw an error when client not found", async () => {
+      
+    });
+  });
+
   describe("execute method", () => {
     it("should throw an error when client not found", async () => {
       const mockClientFacade = {
